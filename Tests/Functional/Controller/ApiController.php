@@ -33,7 +33,7 @@ class ApiController
      * @SWG\Response(
      *     response="200",
      *     description="Success",
-     *     @Model(type=Article::class, groups={"light"})
+     *     @SWG\Schema(ref=@Model(type=Article::class, groups={"light"}))
      * )
      * @Route("/article/{id}", methods={"GET"})
      */
