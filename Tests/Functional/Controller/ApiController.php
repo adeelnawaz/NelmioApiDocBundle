@@ -65,7 +65,7 @@ class ApiController
      *     description="This is a parameter",
      *     @SWG\Schema(
      *         type="array",
-     *         @Model(type=User::class)
+     *         @SWG\Items(ref=@Model(type=User::class))
      *     )
      * )
      * @SWG\Tag(name="implicit")
@@ -85,10 +85,7 @@ class ApiController
      *     name="foo",
      *     in="body",
      *     description="This is a parameter",
-     *     @SWG\Schema(
-     *         type="array",
-     *         @Model(type=UserType::class)
-     *     )
+     *     @SWG\Schema(ref=@Model(type=UserType::class))
      * )
      */
     public function submitUserTypeAction()
@@ -152,7 +149,7 @@ class ApiController
      *     name="form",
      *     in="body",
      *     description="Request content",
-     *     @Model(type=DummyType::class)
+     *     @SWG\Schema(ref=@Model(type=DummyType::class))
      * )
      * @SWG\Response(response="201", description="")
      */
@@ -175,7 +172,7 @@ class ApiController
      * @SWG\Response(
      *     response="201",
      *     description="Used for symfony constraints test",
-     *     @Model(type=SymfonyConstraints::class)
+     *     @SWG\Schema(ref=@Model(type=SymfonyConstraints::class))
      * )
      */
     public function symfonyConstraintsAction()

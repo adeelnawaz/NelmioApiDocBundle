@@ -90,6 +90,10 @@ final class ModelRegister
                 continue;
             }
 
+            if ($annotation instanceof Schema) {
+                @trigger_error(sprintf('Using `@Model` implicitely in a `@SWG\Schema`, `@SWG\Items` or `@SWG\Property` annotation in %s is deprecated since version 3.2 and won\'t be supported in 4.0. Use `ref=@Model()` instead.', $annotation->_context->getDebugLocation()), E_USER_DEPRECATED);
+            }
+
             $annotation->merge([new $annotationClass([
                 'ref' => $this->modelRegistry->register(new Model($this->createType($model->type), $model->groups)),
             ])]);

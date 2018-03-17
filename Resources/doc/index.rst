@@ -176,7 +176,7 @@ This annotation has two options:
     /**
      * @SWG\Response(
      *     response=200,
-     *     @SWG\Schema(ref=@Model(type=User::class))
+     *     @Model(type=User::class)
      * )
      */
 
@@ -185,9 +185,30 @@ This annotation has two options:
     /**
      * @SWG\Response(
      *     response=200,
-     *     @SWG\Schema(ref=@Model(type=User::class, groups={"non_sensitive_data"}))
+     *     @Model(type=User::class, groups={"non_sensitive_data"})
      * )
      */
+
+ .. tip::
+
+     When used at the root of ``@SWG\Response`` and ``@SWG\Parameter``, ``@Model`` is automatically nested
+     in a ``@SWG\Schema``.
+
+     To use ``@Model`` directly within a ``@SWG\Schema``, ``@SWG\Items`` or ``@SWG\Property``, you have to use the ``$ref`` field::
+
+         /**
+          * @SWG\Response(
+          *     @SWG\Schema(ref=@Model(type=User::class))
+          * )
+          *
+          * or
+          *
+          * @SWG\Response(
+          *     @SWG\Schema(type="object",
+          *         @SWG\Property(property="foo", ref=@Model(FooClass::class))
+          *     )
+          * )
+          */
 
 Symfony Form types
 ~~~~~~~~~~~~~~~~~~
